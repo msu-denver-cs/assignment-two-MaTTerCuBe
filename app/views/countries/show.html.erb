@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @country.name %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name:</th>
+      <td><%= @country.name %></td>
+      <th>Makes</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Makes:</strong>
-
-  <ol>
-    <% @country.makes.each do |make| %>
-    <li> <%= make.name %>
-  <% end %>
-  </ol>
-</p>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <ol>
+        <% @country.makes.each do |make| %>
+          <li> <%= make.name %>
+        <% end %>
+        </ol>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_country_path(@country) %> |
 <%= link_to 'Back', countries_path %>
+
