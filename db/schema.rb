@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_192930) do
+ActiveRecord::Schema.define(version: 2019_10_08_044210) do
+
+  create_table "books", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books_libraries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "book_id"
+    t.integer "library_id"
+    t.index ["book_id"], name: "index_books_libraries_on_book_id"
+    t.index ["library_id"], name: "index_books_libraries_on_library_id"
+  end
 
   create_table "cars", force: :cascade do |t|
     t.string "name"
@@ -24,9 +39,19 @@ ActiveRecord::Schema.define(version: 2019_10_03_192930) do
   create_table "cars_parts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "part_id"
+    t.integer "car_id"
+    t.index ["car_id"], name: "index_cars_parts_on_car_id"
+    t.index ["part_id"], name: "index_cars_parts_on_part_id"
   end
 
   create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "libraries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
