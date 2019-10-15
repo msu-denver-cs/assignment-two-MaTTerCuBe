@@ -61,6 +61,11 @@ class CountriesController < ApplicationController
     end
   end
 
+  def search
+    @countries = Country.where("name like ?", "%#{params[:query]}%")
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_country
